@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+       xmlns:tx="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://mybatis.org/schema/mybatis-spring
+       http://mybatis.org/schema/mybatis-spring.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <!-- Spring 负责管理所有的业务逻辑组件,如：数据源、事务控制、DAO 等 -->
+
+    <!-- Spring 不需要扫描控制器 -->
+    <context:component-scan base-package="com.ins.blog">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+
+    <!-- 引入数据库配置文件  -->
+    <context:property-placeholder location="classpath:db-config.properties"/>
+
+    <!-- 配置 c3p0 数据源 -->
+    <bean id="pooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="driverClass" value="${jdbc.driver}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+
+    <!-- 整合 Mybatis -->
+    <!-- 自动创建出 sqlSessionFactory 对象 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="pooledDataSource"/>
+        <!-- 指定全局配置文件的路径 -->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!-- 指定 mapper 配置文件的路径 -->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+    </bean>
+
+    <!-- 将 Mybatis 所有的 mapper 接口的实现加入到 IOC 容器中，
+         也就是配置 mapper 扫描器，扫描所有的 mapper 接口的实现，让这些 mapper 能够自动注入
+         base-package 指定 mapper 所在的包   -->
+    <mybatis-spring:scan base-package="com.ins.blog.dao"/>
+    <!-- 整合 Mybatis 结束-->
+
+
+    <!-- 配置事务 -->
+    <!-- 配置 Spring 事务管理器,指定这个事务管理器控制 c3p0 数据源  -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="pooledDataSource"/>
+    </bean>
+
+    <!-- 1.可以开启基于注解的事务
+    <tx:annotation-driven/>-->
+
+
+
+</beans>

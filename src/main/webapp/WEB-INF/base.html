@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<![endif]-->
+    <title>Insight's Blog</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- CORE JQUERY -->
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- 重定义标题栏格式，使之可以渐变显示 -->
+    <style type="text/css">
+        html, body {width:100%;height:100%;} /*非常重要的样式让背景图片100%适应整个屏幕*/
+        .bg {display: table;width: 100%;height: 100%;padding: 100px 0;text-align: center;color: #fff;background-color: #000;background-size: cover;}
+        .my-navbar {padding:10px 10px 10px 100px;transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;}
+        .my-navbar a{background:transparent !important;color:#fff !important}
+        .my-navbar a:hover {color:#45bcf9 !important;background:transparent;outline:0}
+        .my-navbar a {transition: color 0.5s ease-in-out;}/*-webkit-transition ;-moz-transition*/
+        .top-nav {padding:0;background:#000;}
+        button.navbar-toggle {background-color:#fbfbfb;}/*整个背景都是transparent透明的，会看不到，所以再次覆盖一下*/
+        button.navbar-toggle > span.icon-bar {background-color:#dedede}
+    </style>
+
+    <!-- FONT AWESOME ICON STYLE -->
+    <link href="static/css/font-awesome.css" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="static/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="header">
+        <div class="overlay">
+            <nav class="navbar navbar-fixed-top my-navbar" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my-nav" aria-expanded="false">
+                            <span class="sr-only">切换导航条</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">Insight</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="my-nav">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="">主页</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="{% url 'login' %}">登录</a></li>
+                            <li><a href="{% url 'register' %}">注册</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 logo-div">
+                        <div class="logo-inner text-center">
+                            <div class="logo-name">
+                                <a href="index.html">
+                                    <img src="static/img/me.jpg" class="img-circle" />
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="col-md-8 header-text-top " id="about">
+
+                        <h1>宋科儒的个人博客</h1>
+                        这个博客是基于 Bootstrap 和 SSM 制作的 <br />
+                        这里的文章记录了我的学习过程中的笔记<br />
+						
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--标题底栏-->
+    <div class="info-sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    可以通过我的邮箱 <strong>729885929</strong>@qq.com 联系我
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="copyrights">Collect from <a href="http://www.smallseashell.com/"  title="网站模板">网站模板</a></div>-->
+    <!--END INFO SECTION-->
+
+    <!-- 日志栏 -->
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-8 ">
+               
+
+
+                <br />
+           
+            </div>
+
+            <div class="col-md-1"></div>
+            <div class="col-md-3" style="padding-top: 30px;">
+				<div class="row">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>文章类别</strong></li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+				</div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <!-- 主页底部信息 -->
+    <div class="footer-sec" style="margin-top: 0px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 foo-inner">
+                    &copy; 2015 Yourdomain.com
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END FOOTER SECTION -->
+
+    <!-- JAVASCRIPT 文件 -->
+    <!-- 重定义标题栏格式，使之可以渐变显示 -->
+    <script>
+        $(window).scroll(function () {
+            if ($(".navbar").offset().top > 50) {$(".navbar-fixed-top").addClass("top-nav");
+            }else {$(".navbar-fixed-top").removeClass("top-nav");}
+        })
+    </script>
+</body>
+</html>
